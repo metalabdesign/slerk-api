@@ -31,3 +31,8 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: true
+
+# Configure Authentication
+config :joken, :auth0,
+  app_id: System.get_env("AUTH0_APP_ID"),
+  secret: System.get_env("AUTH0_SECRET") |> Base.decode64 |> elem(1)
