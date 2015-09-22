@@ -32,6 +32,7 @@ defmodule SlerkAPI.Mixfile do
      {:phoenix_ecto, "~> 1.1"},
      {:postgrex, ">= 0.0.0"},
      {:cowboy, "~> 1.0"},
-     {:joken, "0.16.0"}]
+     {:joken, "0.16.0"},
+     {:relax, github: "AgilionApps/relax"}]
   end
 end

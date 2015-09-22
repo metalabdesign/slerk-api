@@ -1,15 +1,15 @@
 defmodule Auth0 do
-  import Joken, except: [import: 1]
+  import Joken, except: [verify: 1]
 
   def verify(jwt) do
-    %Joken.Token{token: jwt}
+    validate
     |> with_json_module(Poison)
-    |> validate
+    |> with_compact_token(jwt)
     |> Joken.verify
   end
 
-  def validate(token) do
-    token
+  def validate do
+    %Joken.Token{}
     |> with_json_module(Poison)
     |> with_signer(hs256(config[:secret]))
     |> with_validation("aud", &(&1 == config[:app_id]))

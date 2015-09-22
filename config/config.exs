@@ -35,4 +35,4 @@ config :phoenix, :generators,
 # Configure Authentication
 config :joken, :auth0,
   app_id: System.get_env("AUTH0_APP_ID"),
-  secret: System.get_env("AUTH0_SECRET") |> Base.decode64 |> elem(1)
+  secret: System.get_env("AUTH0_SECRET") |> Kernel.||("") |> Base.decode64 |> elem(1)

@@ -2,8 +2,8 @@ defmodule SlerkAPI.Endpoint do
   use Phoenix.Endpoint, otp_app: :slerk_api
 
   plug Joken.Plug,
-    on_verifying: &Auth0.validate/1,
-    on_error: &Joken.Plug.default_on_error/1
+    on_verifying: &Auth0.validate/0,
+    on_error: &Joken.Plug.default_on_error/2
 
   socket "/socket", SlerkAPI.UserSocket
 
