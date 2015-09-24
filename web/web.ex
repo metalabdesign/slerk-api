@@ -24,32 +24,6 @@ defmodule SlerkAPI.Web do
     end
   end
 
-  def controller do
-    quote do
-      use Phoenix.Controller, namespace: SlerkAPI
-
-      alias SlerkAPI.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 1, from: 2]
-
-      import SlerkAPI.Router.Helpers
-    end
-  end
-
-  def view do
-    quote do
-      use Phoenix.View, root: "web/templates", namespace: SlerkAPI
-
-      # Import convenience functions from controllers
-      import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
-
-      # Use all HTML functionality (forms, tags, etc)
-      use Phoenix.HTML
-
-      import SlerkAPI.Router.Helpers
-    end
-  end
-
   def router do
     quote do
       use Phoenix.Router

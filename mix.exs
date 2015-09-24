@@ -33,6 +33,7 @@ defmodule SlerkAPI.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:cowboy, "~> 1.0"},
      {:joken, "0.16.0"},
-     {:relax, github: "AgilionApps/relax"}]
+     {:relax, github: "AgilionApps/relax"},
+     {:plug_cors, "~> 0.8.0"}]
   end
 end
