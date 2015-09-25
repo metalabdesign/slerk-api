@@ -15,6 +15,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :slerk_api, SlerkAPI.Repo,
   adapter: Ecto.Adapters.Postgres,
+  url: {:system, "DATABASE_URL"},
   database: "slerk_api_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
