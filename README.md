@@ -2,16 +2,10 @@
 
 ## Installation
 
-To setup your Phoenix app, you'll need [Elixir](http://elixir-lang.org/) and [PostgreSQL](http://www.postgresql.org/) installed on your system. The easiest way to install Elixir is with [Homebrew](http://brew.sh/):
+To setup your Phoenix app, you'll need [Elixir](http://elixir-lang.org/) and [PostgreSQL](http://www.postgresql.org/) installed on your system. The easiest way to install both of these is with [Homebrew](http://brew.sh/):
 
 ```bash
-brew update && brew install elixir
-```
-
-Once you've installed Elixir, you'll need to install Postgres, along with the `psql` command line tool. The easiest way to install both of these is to use Homebrew again:
-
-```bash
-brew install postgres
+brew update && brew install elixir postgres
 ```
 
  To start your Phoenix app and run it, just follow these steps:
