@@ -15,5 +15,5 @@ for blueprint in docs/*.apib; do
   version=$(echo $blueprint | sed 's/\.apib$//');
   version_path=priv/static/$version
   mkdir -p $version_path
-  aglio --theme flatly-collapsed -i $blueprint -o $version_path/index.html
+  ./node_modules/.bin/aglio --theme flatly-collapsed -i $blueprint -o $version_path/index.html
 done

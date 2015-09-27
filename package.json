@@ -1,0 +1,12 @@
+{
+  "name": "slerk-api",
+  "description": "Slerk API",
+  "author": "James Phillips",
+  "engines": {
+    "node": "0.12.x",
+    "npm": "2.x"
+  },
+  "dependencies": {
+    "aglio": "^2.1.1"
+  }
+}
