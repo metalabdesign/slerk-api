@@ -1,0 +1,64 @@
+# Group Users
+
+## Retrieve User [/users/{user_id}]
+
+### GET
+
++ Parameters
+
+    + user_id: `github|194892` (string, required)
+
++ Request
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: Bearer <<USERS_JWT_TOKEN>>
+
++ Response 200
+
+            {
+              "jsonapi": {
+                "version": "1.0"
+              },
+              "data": {
+                "type": "users",
+                "id": "github|194892",
+                "attributes": {
+                  "name": "Rick Sanchez",
+                  "presence": "online",
+                  "inserted-at": "2015-09-27T00:50:36Z"
+                }
+              }
+            }
+
+    + Schema
+
+            {
+              "type": "object",
+              "required": false,
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "required": true,
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                      "required": true,
+                      "properties": {
+                        "text": {
+                          "type": "string",
+                          "required": true
+                        },
+                        "meta": {
+                          "type": "object",
+                          "required": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+<!-- include(not_found.apib) -->

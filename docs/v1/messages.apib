@@ -1,0 +1,257 @@
+# Group Messages
+
+## Retreive Messages [/channels/{channel_id}/messages{?filter}]
+
+::: warning
+#### <i class="fa fa-warning"></i> Caution
+LOLOL
+:::
+
+### GET
+
++ Parameters
+
+    + channel_id (string, required)
+
++ Request
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: Bearer <<USERS_JWT_TOKEN>>
+
++ Response 200
+
+            {
+              "jsonapi": {
+                "version": "1.0"
+              },
+              "data": [
+                {
+                  "type": "message",
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "type": "users",
+                        "id": "github|194892"
+                      }
+                    },
+                    "channel": {
+                      "data": {
+                        "type": "channels",
+                        "id": "1c6edb3c-92a9-4031-b8b8-f194e2399db6"
+                      }
+                    }
+                  },
+                  "id": "58b90f9c-f287-47b2-96b2-fdebe33f5eef",
+                  "attributes": {
+                    "text": "wubalubadubdub",
+                    "meta": {},
+                    "inserted-at": "2015-09-26T07:18:22Z"
+                  }
+                }
+              ]
+            }
+
+    + Schema
+
+            <!-- include(message-schema.json) -->
+
+<!-- include(not_found.apib) -->
+
+## Create Message [/channels/{channel_id}/messages]
+
+### POST
+
++ Parameters
+
+    + channel_id (string, required)
+
++ Request
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: Bearer <<USERS_JWT_TOKEN>>
+            Content-Type: application/vnd.api+json
+
+    + Body
+
+            {
+                "data": {
+                    "attributes": {
+                        "text": "wubalubadubdub!"
+                    }
+                }
+            }
+
++ Response 200
+
+            {
+              "jsonapi": {
+                "version": "1.0"
+              },
+              "data": [
+                {
+                  "type": "message",
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "type": "users",
+                        "id": "github|194892"
+                      }
+                    },
+                    "channel": {
+                      "data": {
+                        "type": "channels",
+                        "id": "1c6edb3c-92a9-4031-b8b8-f194e2399db6"
+                      }
+                    }
+                  },
+                  "id": "58b90f9c-f287-47b2-96b2-fdebe33f5eef",
+                  "attributes": {
+                    "text": "wubalubadubdub",
+                    "meta": {},
+                    "inserted-at": "2015-09-26T07:18:22Z"
+                  }
+                }
+              ]
+            }
+
+    + Schema
+
+            <!-- include(message-schema.json) -->
+
+<!-- include(not_found.apib) -->
+
++ Response 422
+
+            {
+              "errors": [
+                {
+                  "source": {
+                    "pointer": "/data/attributes/text"
+                  },
+                  "detail": "is invalid"
+                }
+              ]
+            }
+
+## Update Message [/messages/{message_id}]
+
+### PATCH
+
++ Parameters
+
+    + message_id (string, required)
+
++ Request
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: Bearer <<USERS_JWT_TOKEN>>
+            Content-Type: application/vnd.api+json
+
+    + Body
+
+            {
+                "data": {
+                    "attributes": {
+                        "text": "Shum shum shlippedy dop"
+                    }
+                }
+            }
+
++ Response 200
+
+            {
+              "jsonapi": {
+                "version": "1.0"
+              },
+              "data": [
+                {
+                  "type": "message",
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "type": "users",
+                        "id": "github|194892"
+                      }
+                    },
+                    "channel": {
+                      "data": {
+                        "type": "channels",
+                        "id": "1c6edb3c-92a9-4031-b8b8-f194e2399db6"
+                      }
+                    }
+                  },
+                  "id": "58b90f9c-f287-47b2-96b2-fdebe33f5eef",
+                  "attributes": {
+                    "text": "Shum shum shlippedy dop"",
+                    "meta": {},
+                    "inserted-at": "2015-09-26T07:18:22Z"
+                  }
+                }
+              ]
+            }
+
+    + Schema
+
+            <!-- include(message-schema.json) -->
+
+<!-- include(not_found.apib) -->
+
+## Retreive Message [/messages/{message_id}{?included}]
+
+### GET
+
++ Parameters
+
+    + message_id (string, required)
+
++ Request
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: Bearer <<USERS_JWT_TOKEN>>
+
++ Response 200
+
+            {
+              "jsonapi": {
+                "version": "1.0"
+              },
+              "data": [
+                {
+                  "type": "message",
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "type": "users",
+                        "id": "github|194892"
+                      }
+                    },
+                    "channel": {
+                      "data": {
+                        "type": "channels",
+                        "id": "1c6edb3c-92a9-4031-b8b8-f194e2399db6"
+                      }
+                    }
+                  },
+                  "id": "58b90f9c-f287-47b2-96b2-fdebe33f5eef",
+                  "attributes": {
+                    "text": "wubalubadubdub",
+                    "meta": {},
+                    "inserted-at": "2015-09-26T07:18:22Z"
+                  }
+                }
+              ]
+            }
+
+    + Schema
+
+            <!-- include(message-schema.json) -->
+
+<!-- include(not_found.apib) -->

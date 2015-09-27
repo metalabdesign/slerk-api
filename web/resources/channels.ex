@@ -8,14 +8,14 @@ defmodule SlerkAPI.API.Channels do
 
   def serializer, do: SlerkAPI.Serializer.Channel
   def error_serializer, do: JaSerializer.EctoErrorSerializer
-  def model, do: SlerkAPI.Models.Channel
-  def repo, do: SlerkAPI.Repo
+  def model, do: Channel
+  def repo, do: Repo
 
   plug :resource
   plug :not_found
 
   def fetchable(_) do
-    from(p in Channel) |> Repo.all
+    from(p in Channel)
   end
 
   def create(conn, attributes) do
@@ -28,8 +28,9 @@ defmodule SlerkAPI.API.Channels do
     Channel.changeset(channel, attributes)
   end
 
+  # NOTE: Ignore deletion for the time being.
   def delete(_, channel) do
-    Repo.delete!(channel)
+    # Repo.delete!(channel)
   end
 
   def permitted_attributes(_, _), do: [:name, :topic]

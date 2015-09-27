@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "jsonapi": {
+      "id": "jsonapi",
+      "type": "object",
+      "properties": {
+        "version": {
+          "id": "version",
+          "type": "string"
+        }
+      }
+    },
+    "data": {
+      "id": "data",
+      "type": "object",
+      "properties": {
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "relationships": {
+          "id": "relationships",
+          "type": "object",
+          "properties": {
+            "creator": {
+              "id": "creator",
+              "type": "object",
+              "properties": {
+                "data": {
+                  "id": "data",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "id": "type",
+                      "type": "string"
+                    },
+                    "id": {
+                      "id": "id",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "id": {
+          "id": "id",
+          "type": "string"
+        },
+        "attributes": {
+          "id": "attributes",
+          "type": "object",
+          "properties": {
+            "topic": {
+              "id": "topic",
+              "type": "string"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            },
+            "inserted-at": {
+              "id": "inserted-at",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
