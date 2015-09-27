@@ -1,0 +1,18 @@
+## Media Types
+
+Where applicable this API uses the [json:api](http://jsonapi.org/format/) format to represent
+resources states and affordances.
+
+Please use the `application/vnd.api+json` media type when requesting resources.
+
+## Error States
+
+The common [HTTP Response Status
+Codes](https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md) are used.
+
+## Authentication
+
+Authentication is handled through Auth0.
+
+After authenticating and receiving a web token you will use it to authorize any requests to the API.
+Use the request header `Authorization: Bearer <<JWT token>>`.

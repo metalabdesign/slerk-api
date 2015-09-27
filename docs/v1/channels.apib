@@ -1,0 +1,228 @@
+# Group Channel
+
+## Retrieve Channels [/channels{?filter}]
+
+### GET
+
++ Request
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: Bearer <<USERS_JWT_TOKEN>>
+
++ Response 200
+
+    + Body
+
+            {
+              "jsonapi": {
+                "version": "1.0"
+              },
+              "data": [
+                {
+                  "type": "channel",
+                  "relationships": {
+                    "creator": {
+                      "data": {
+                        "type": "users",
+                        "id": "github|194892"
+                      }
+                    }
+                  },
+                  "id": "1c6edb3c-92a9-4031-b8b8-f194e2399db6",
+                  "attributes": {
+                    "topic": null,
+                    "name": "rick-and-morty",
+                    "inserted-at": "2015-09-22T06:52:58Z"
+                  }
+                }
+              ]
+            }
+
+    + Schema
+
+            <!-- include(channel-schema.json) -->
+
+<!-- include(not_found.apib) -->
+
+## Create Channel [/channels]
+
+### POST
+
++ Request
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: Bearer <<USERS_JWT_TOKEN>>
+            Content-Type: application/vnd.api+json
+
+    + Body
+
+            {
+                "data": {
+                    "attributes": {
+                        "name": "rick-and-morty",
+                        "topic": "Shum shum shlippedy dop"
+                    }
+                }
+            }
+
++ Response 201
+
+            {
+              "jsonapi": {
+                "version": "1.0"
+              },
+              "data": {
+                "type": "channel",
+                "relationships": {
+                  "creator": {
+                    "data": {
+                      "type": "users",
+                      "id": "github|194892"
+                    }
+                  }
+                },
+                "id": "1c6edb3c-92a9-4031-b8b8-f194e2399db6",
+                "attributes": {
+                  "topic": "Shum shum shlippedy dop",
+                  "name": "rick-and-morty",
+                  "inserted-at": "2015-09-22T06:52:58Z"
+                }
+              }
+            }
+
+    + Schema
+
+            <!-- include(channel-schema.json) -->
+
++ Response 422
+
+            {
+              "errors": [
+                {
+                  "source": {
+                    "pointer": "/data/attributes/topic"
+                  },
+                  "detail": "is invalid"
+                }
+              ]
+            }
+
+## Update Channel [/channels/{channel_id}]
+
+### PATCH
+
++ Parameters
+
+    + channel_id (string, required)
+
++ Request
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: Bearer <<USERS_JWT_TOKEN>>
+            Content-Type: application/vnd.api+json
+
+    + Body
+
+            {
+                "data": {
+                    "attributes": {
+                        "topic": "Wubba lubba dub-dub!"
+                    }
+                }
+            }
+
++ Response 200
+
+            {
+              "jsonapi": {
+                "version": "1.0"
+              },
+              "data": {
+                "type": "channel",
+                "relationships": {
+                  "creator": {
+                    "data": {
+                      "type": "users",
+                      "id": "github|194892"
+                    }
+                  }
+                },
+                "id": "ed42c29b-60cb-4851-a7d3-ec1b3af10788",
+                "attributes": {
+                  "topic": "Wubba lubba dub-dub!",
+                  "name": "rick-and-morty",
+                  "inserted-at": "2015-09-27T00:50:36Z"
+                }
+              }
+            }
+
+    + Schema
+
+            <!-- include(channel-schema.json) -->
+
+<!-- include(not_found.apib) -->
+
++ Response 422
+
+            {
+              "errors": [
+                {
+                  "source": {
+                    "pointer": "/data/attributes/topic"
+                  },
+                  "detail": "is invalid"
+                }
+              ]
+            }
+
+## Retrieve Channel [/channels/{channel_id}{?included}]
+
+### GET
+
++ Parameters
+
+    + channel_id (string, required)
+
++ Request
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: Bearer <<USERS_JWT_TOKEN>>
+
++ Response 200
+
+            {
+              "jsonapi": {
+                "version": "1.0"
+              },
+              "data": {
+                "type": "channel",
+                "relationships": {
+                  "creator": {
+                    "data": {
+                      "type": "users",
+                      "id": "github|194892"
+                    }
+                  }
+                },
+                "id": "1c6edb3c-92a9-4031-b8b8-f194e2399db6",
+                "attributes": {
+                  "topic": "Shum shum shlippedy dop",
+                  "name": "rick-and-morty",
+                  "inserted-at": "2015-09-22T06:52:58Z"
+                }
+              }
+            }
+
+    + Schema
+
+            <!-- include(channel-schema.json) -->
+
+<!-- include(not_found.apib) -->

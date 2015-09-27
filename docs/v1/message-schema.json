@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "jsonapi": {
+      "id": "jsonapi",
+      "type": "object",
+      "properties": {
+        "version": {
+          "id": "version",
+          "type": "string"
+        }
+      }
+    },
+    "data": {
+      "id": "data",
+      "type": "array",
+      "items": {
+        "id": "0",
+        "type": "object",
+        "properties": {
+          "type": {
+            "id": "type",
+            "type": "string"
+          },
+          "relationships": {
+            "id": "relationships",
+            "type": "object",
+            "properties": {
+              "user": {
+                "id": "user",
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "id": "data",
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "id": "type",
+                        "type": "string"
+                      },
+                      "id": {
+                        "id": "id",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "channel": {
+                "id": "channel",
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "id": "data",
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "id": "type",
+                        "type": "string"
+                      },
+                      "id": {
+                        "id": "id",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "id": {
+            "id": "id",
+            "type": "string"
+          },
+          "attributes": {
+            "id": "attributes",
+            "type": "object",
+            "properties": {
+              "text": {
+                "id": "text",
+                "type": "string"
+              },
+              "meta": {
+                "id": "meta",
+                "type": "object",
+                "properties": {}
+              },
+              "inserted-at": {
+                "id": "inserted-at",
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "additionalItems": false
+    }
+  }
+}

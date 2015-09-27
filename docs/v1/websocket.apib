@@ -1,0 +1,96 @@
+# Group WebSocket
+
+## Connecting To Socket
+
+The socket server uses Phoenix Channels and the easiest way to connect is to use the Phoenix.js
+library. To connect, the server expects that you pass in the user's web token as a query param.
+
+### Example
+
+```
+const socket = new Socket("wss://...");
+socket.connect({ token: localStorage.getItem("users:token") });
+```
+
+For more information see: [Phoenix Channels] documentation.
+
+[Phoenix Channels]: http://www.phoenixframework.org/docs/channels
+
+# Group Presence Channel
+
+Fires presence updates on for all users.
+
+::: note
+#### <i class="fa fa-warning"></i> Caution
+Coming Soon!
+:::
+
+# Group Messages Channel
+
+### Joining
+
+Connect to topics in this channel to send and receive new messages, typing notifications and message
+updates. A separate topic exists for each channel and each is named by it's ID prefixed by
+`channels:`.
+
+<h4>Example</h4>
+
+```javascript
+const socket = new Socket("wss://...");
+socket.connect({ token: "wubalubadubdub" });
+const channel = socket.channel("channels:ed42c29b-60cb-4851-a7d3-ec1b3af10788", {});
+channel.join();
+```
+
+### Send A Message
+
+Send a message for a given channel. Only permitted values for a message are it's `text` field.
+
+<h4>Example</h4>
+
+```javascript
+// establish connection ...
+// join channel ...
+channel.push("message", {text: "Gubba nub nub doo rah kah."});
+```
+
+### Receive Messages
+
+Listen for `message` events for new messages added to the channel. See
+[Message Endpoint](#messages-retreive-message-get) for example of message's payload.
+
+<h4>Example</h4>
+
+```javascript
+// establish connection ...
+// join channel ...
+channel.on("message", (message) => {
+  console.log(message); // { data: ... };
+});
+```
+
+### Send Typing Event
+
+You can send typing messages when the users is typing a message within the context of the channel.
+
+<h4>Example</h4>
+
+```javascript
+// establish connection ...
+// join channel ...
+channel.push("typing", {});
+```
+
+### Receive Typing Events
+
+Listen for `user_typing` events, for information on who is currently typing a message.
+
+<h4>Example</h4>
+
+```javascript
+// establish connection ...
+// join channel ...
+channel.on("user_typing", (payload) => {
+  console.log(payload); // { uid: "github|12314" };
+});
+```

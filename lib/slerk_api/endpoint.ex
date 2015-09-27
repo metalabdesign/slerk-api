@@ -3,6 +3,12 @@ defmodule SlerkAPI.Endpoint do
 
   socket "/socket", SlerkAPI.UserSocket
 
+  # Host documentation
+  plug PlugRedirect, %{"/docs" => "/docs/v1/index.html"}
+  plug Plug.Static,
+    at: "/", from: :slerk_api, gzip: true,
+    only: ~w(docs favicon.ico robots.txt)
+
   plug Plug.RequestId
   plug Plug.Logger
   plug PlugCors

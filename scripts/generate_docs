@@ -1,0 +1,19 @@
+#!/bin/sh
+
+if hash aglio 2>/dev/null; then
+  echo "aglio is installed"
+else
+  if hash npm 2>/dev/null; then
+    npm install -g aglio
+  else
+    echo "Documentation server requires node.js to be installed"
+    exit 1
+  fi
+fi
+
+for blueprint in docs/*.apib; do
+  version=$(echo $blueprint | sed 's/\.apib$//');
+  version_path=priv/static/$version
+  mkdir -p $version_path
+  aglio --theme flatly-collapsed -i $blueprint -o $version_path/index.html
+done
