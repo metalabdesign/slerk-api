@@ -29,7 +29,7 @@ defmodule SlerkAPI.API.Channels do
   end
 
   # NOTE: Ignore deletion for the time being.
-  def delete(_, channel) do
+  def delete(_, _channel) do
     # Repo.delete!(channel)
   end
 
