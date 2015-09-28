@@ -3,7 +3,6 @@ defmodule SlerkAPI.UserSocket do
 
   ## Channels
   channel "channels:*", SlerkAPI.GroupChannel
-  channel "users:presence", SlerkAPI.PresenceChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

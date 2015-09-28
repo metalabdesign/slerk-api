@@ -1,11 +1,11 @@
 # Group WebSocket
 
-### Connecting To Socket
+## Connecting To Socket
 
 The socket server uses Phoenix Channels and the easiest way to connect is to use the Phoenix.js
 library. To connect, the server expects that you pass in the user's web token as a query param.
 
-<h4>Example</h4>
+### Example
 
 ```
 const socket = new Socket("wss://...");
@@ -18,34 +18,12 @@ For more information see: [Phoenix Channels] documentation.
 
 # Group Presence Channel
 
-Fires presence updates for all users.
+Fires presence updates on for all users.
 
-### Joining
-
-<h4>Example</h4>
-
-```javascript
-const socket = new Socket("wss://...");
-socket.connect({ token: "wubalubadubdub" });
-const channel = socket.channel("users:presence", {});
-channel.join();
-```
-
-### Receive Status Events
-
-The `status_changed` event is fired when a user connects to the channel for the first time, when
-they leave the channel, or when they disconnect. Note that if the user connects to the channel on a
-different socket the event is not re-fired.
-
-<h4>Example</h4>
-
-```javascript
-// establish connection ...
-// join channel ...
-channel.on("status_changed", (payload) => {
-  console.log(payload); // { uid: "github|12345", status: "online" };
-});
-```
+::: note
+#### <i class="fa fa-warning"></i> Caution
+Coming Soon!
+:::
 
 # Group Messages Channel
 

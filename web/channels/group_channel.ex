@@ -4,7 +4,6 @@ defmodule SlerkAPI.GroupChannel do
   alias SlerkAPI.Repo
   alias SlerkAPI.Message
   alias SlerkAPI.Serializer
-  alias SlerkAPI.UserPresenceStore
   alias JaSerializer.EctoErrorSerializer
 
   def join("channels:" <> _, _, socket) do
@@ -13,7 +12,6 @@ defmodule SlerkAPI.GroupChannel do
 
   ## Message
   def handle_in("message", params, socket) do
-    touch_last_event_at socket
     case create_message(params, socket) do
       {:ok, record} ->
         broadcast! socket, "message", Serializer.Message.format(record)
@@ -25,8 +23,13 @@ defmodule SlerkAPI.GroupChannel do
 
   ## Typing events
   def handle_in("typing", _, socket) do
-    touch_last_event_at socket
     broadcast! socket, "user_typing", Dict.take(socket.assigns, [:uid])
+    {:noreply, socket}
+  end
+
+  ## Presence
+  def handle_in("tickle", _, socket) do
+    # TODO: Update user's availability
     {:noreply, socket}
   end
 
@@ -39,7 +42,4 @@ defmodule SlerkAPI.GroupChannel do
   defp extract_channel_id(%{topic: "channels:" <> id}), do: id
   defp extract_context(socket),
     do: %{"channel_id" => extract_channel_id(socket), "user_id" => socket.assigns.uid}
-
-  defp touch_last_event_at(socket),
-    do: UserPresenceStore.touch_last_event(socket.assigns.uid)
 end
