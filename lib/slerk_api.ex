@@ -11,8 +11,8 @@ defmodule SlerkAPI do
       supervisor(SlerkAPI.Endpoint, []),
       # Start the Ecto repository
       worker(SlerkAPI.Repo, []),
-      # Here you could define other workers and supervisors as children
-      # worker(SlerkAPI.Worker, [arg1, arg2, arg3]),
+      # Start UserPresence store
+      worker(SlerkAPI.UserPresenceStore, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
