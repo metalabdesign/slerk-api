@@ -87,8 +87,8 @@
                 "type": "object",
                 "properties": {}
               },
-              "inserted-at": {
-                "id": "inserted-at",
+              "insertedAt": {
+                "id": "insertedAt",
                 "type": "string"
               }
             }
