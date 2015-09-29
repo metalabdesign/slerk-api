@@ -11,7 +11,7 @@ defmodule SlerkAPI.UserSocket do
 
   # Verify and authenticate user
   def connect(params, socket) do
-    token = Auth0.verify(params["token"])
+    token = Auth0Token.verify(params["token"])
     if token.error |> is_nil do
       {:ok, assign(socket, :uid, token.claims["sub"])}
     else

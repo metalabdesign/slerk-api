@@ -1,21 +1,33 @@
 defmodule Auth0 do
-  import Joken, except: [verify: 1]
+  use HTTPotion.Base
 
-  def verify(jwt) do
-    validate
-    |> with_json_module(Poison)
-    |> with_compact_token(jwt)
-    |> Joken.verify
+  import Joken
+
+  def process_url(url) do
+    "https://slerk.auth0.com/api/v2/" <> url
   end
 
-  def validate do
-    %Joken.Token{}
+  def process_response_body(body) do
+    body
+    |> IO.iodata_to_binary
+    |> Poison.decode(keys: :atoms)
+    |> elem(1)
+  end
+
+  def get_user(id) do
+    token = build_bearer_token(%{scopes: %{users: %{actions: ["read"]}}})
+    get("users/" <> id, headers: %{:"Authorization" => "Bearer " <> token})
+  end
+
+  defp build_bearer_token(scopes) do
+    %Joken.Token{claims: scopes}
     |> with_json_module(Poison)
+    |> with_aud(config[:apikey])
     |> with_signer(hs256(config[:secret]))
-    |> with_validation("aud", &(&1 == config[:app_id]))
-    |> with_validation("exp", &(&1 > current_time))
-    |> with_validation("iat", &(&1 < current_time))
+    |> with_iat
+    |> sign
+    |> get_compact
   end
 
-  defp config, do: Application.get_env(:joken, :auth0)
+  defp config, do: Application.get_env(:auth0, :client)
 end

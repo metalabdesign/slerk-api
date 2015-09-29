@@ -19,6 +19,12 @@ defmodule SlerkAPI.UserPresence do
     broadcast_status("offline", uid, count)
   end
 
+  @doc "Fetch presence details for given user"
+  def get_presence(uid) do
+    %{online:       (UserPresenceStore.get_count(uid) || 0) > 0,
+      last_event_at: UserPresenceStore.get_last_event_at(uid)}
+  end
+
   defp broadcast_status(status, uid, 1) when status == "online" do
     Endpoint.broadcast("users:presence", "status_updated", %{uid: uid, status: status})
   end
