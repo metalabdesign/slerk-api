@@ -63,8 +63,8 @@
               "id": "name",
               "type": "string"
             },
-            "inserted-at": {
-              "id": "inserted-at",
+            "insertedAt": {
+              "id": "insertedAt",
               "type": "string"
             }
           }

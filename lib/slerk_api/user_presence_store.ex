@@ -38,7 +38,17 @@ defmodule SlerkAPI.UserPresenceStore do
   @doc "Update last event time for given user"
   def touch_last_event(uid) do
     Agent.cast(__MODULE__, fn state ->
-      put_in(state, [:last_event_at, uid], :os.timestamp)
+      put_in(state, [:last_event_at, uid], Ecto.DateTime.utc)
     end)
+  end
+
+  @doc "Get reference count for given user"
+  def get_count(uid) do
+    Agent.get SlerkAPI.UserPresenceStore, &get_in(&1, [:ref_count, uid])
+  end
+
+  @doc "Get last event timestamp for given user"
+  def get_last_event_at(uid) do
+    Agent.get SlerkAPI.UserPresenceStore, &get_in(&1, [:last_event_at, uid])
   end
 end
