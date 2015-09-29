@@ -48,10 +48,6 @@
             "lastEventAt": {
               "id": "lastEventAt",
               "type": "null"
-            },
-            "blog": {
-              "id": "blog",
-              "type": "string"
             }
           }
         }

@@ -8,15 +8,13 @@ defmodule Auth0 do
   end
 
   def process_response_body(body) do
-    body
-    |> IO.iodata_to_binary
-    |> Poison.decode(keys: :atoms)
-    |> elem(1)
+    body |> Poison.decode!(keys: :atoms!)
   end
 
-  def get_user(id) do
+  def get_user(id, fields \\ ~w(user_id name nickname picture)) do
     token = build_bearer_token(%{scopes: %{users: %{actions: ["read"]}}})
-    get("users/" <> id, headers: %{:"Authorization" => "Bearer " <> token})
+    query = %{fields: fields |> Enum.join(",")} |> URI.encode_query
+    get("users/#{id}?#{query}", headers: %{:"Authorization" => "Bearer " <> token})
   end
 
   defp build_bearer_token(scopes) do
