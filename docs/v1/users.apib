@@ -22,43 +22,20 @@
                 "version": "1.0"
               },
               "data": {
-                "type": "users",
+                "type": "user",
                 "id": "github|194892",
                 "attributes": {
-                  "name": "Rick Sanchez",
-                  "presence": "online",
-                  "inserted-at": "2015-09-27T00:50:36Z"
+                  "picture": "https://avatars.githubusercontent.com/u/194892?v=3",
+                  "online": false,
+                  "nickname": "jamesdphillips",
+                  "name": "James Phillips",
+                  "lastEventAt": null
                 }
               }
             }
 
     + Schema
 
-            {
-              "type": "object",
-              "required": false,
-              "properties": {
-                "data": {
-                  "type": "object",
-                  "required": true,
-                  "properties": {
-                    "attributes": {
-                      "type": "object"
-                      "required": true,
-                      "properties": {
-                        "text": {
-                          "type": "string",
-                          "required": true
-                        },
-                        "meta": {
-                          "type": "object",
-                          "required": true
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            <!-- include(user-schema.json) -->
 
 <!-- include(not_found.apib) -->

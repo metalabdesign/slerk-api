@@ -17,7 +17,7 @@ defmodule SlerkAPI.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {SlerkAPI, []},
-     applications: [:phoenix, :cowboy, :logger, :phoenix_ecto, :postgrex]]
+     applications: [:phoenix, :cowboy, :logger, :phoenix_ecto, :postgrex, :httpotion]]
   end
 
   # Specifies which paths to compile per environment
@@ -34,6 +34,9 @@ defmodule SlerkAPI.Mixfile do
      {:cowboy, "~> 1.0"},
      {:joken, "0.16.0"},
      {:relax, github: "AgilionApps/relax"},
-     {:plug_cors, "~> 0.8.0"}]
+     {:plug_cors, "~> 0.8.0"},
+     {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.2"},
+     {:httpotion, "~> 2.1.0"},
+     {:inflex, "~> 1.5.0"}]
   end
 end

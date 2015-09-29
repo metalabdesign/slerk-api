@@ -13,7 +13,7 @@ defmodule SlerkAPI.Endpoint do
   plug Plug.Logger
   plug PlugCors
   plug Joken.Plug,
-    on_verifying: &Auth0.validate/0,
+    on_verifying: &Auth0Token.validate/0,
     on_error: &Joken.Plug.default_on_error/2
 
   plug Plug.Parsers,

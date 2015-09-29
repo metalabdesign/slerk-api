@@ -33,6 +33,15 @@ config :phoenix, :generators,
   binary_id: true
 
 # Configure Authentication
-config :joken, :auth0,
+config :auth0, :joken,
   app_id: System.get_env("AUTH0_APP_ID"),
-  secret: System.get_env("AUTH0_SECRET") |> Kernel.||("") |> Base.decode64 |> elem(1)
+  secret: System.get_env("AUTH0_APP_SECRET") |> Kernel.||("") |> Base.decode64 |> elem(1)
+
+# Configure Auth0 Client
+config :auth0, :client,
+  apikey: System.get_env("AUTH0_KEY"),
+  secret: System.get_env("AUTH0_SECRET") |> Kernel.||("") |> Base.url_decode64 |> elem(1)
+
+# Use pascal case to appease the eslint gods
+config :ja_serializer,
+  key_format: {:custom, Inflector, :pascalize}
