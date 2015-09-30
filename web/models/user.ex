@@ -12,9 +12,19 @@ defmodule SlerkAPI.User do
 
   ## Fetch user details from Auth0 & user presence store in parallel
   defp fetch_remote(id) do
-    [ Task.async(fn -> Auth0.get_user(id).body end),
+    [ Task.async(__MODULE__, :fetch_auth0_details, [id]),
       Task.async(UserPresence, :get_presence, [id]) ]
     |> Enum.map(&Task.await(&1, 5_000))
     |> Enum.concat |> Enum.into(%{})
+  end
+
+  def fetch_auth0_details(id) do
+    ConCache.get_or_store(:users, id, fn ->
+      case Auth0.get_user(id).body do
+        user -> user
+        # Only store errors briefly to avoid lots of painful lookups
+        user = %{error: _} -> %ConCache.Item{value: user, ttl: :timer.seconds(1)}
+      end
+    end)
   end
 end
