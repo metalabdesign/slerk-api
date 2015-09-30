@@ -15,30 +15,16 @@
 
     + Body
 
-            {
-              "jsonapi": {
-                "version": "1.0"
+            [
+              {
+                "name": "general",
+                "id": "1c6edb3c-92a9-4031-b8b8-f194e2399db6"
               },
-              "data": [
-                {
-                  "type": "channel",
-                  "relationships": {
-                    "creator": {
-                      "data": {
-                        "type": "users",
-                        "id": "github|194892"
-                      }
-                    }
-                  },
-                  "id": "1c6edb3c-92a9-4031-b8b8-f194e2399db6",
-                  "attributes": {
-                    "topic": null,
-                    "name": "rick-and-morty",
-                    "insertedAt": "2015-09-22T06:52:58Z"
-                  }
-                }
-              ]
-            }
+              {
+                "name": "rick-and-morty",
+                "id": "ed42c29b-60cb-4851-a7d3-ec1b3af10788"
+              }
+            ]
 
     + Schema
 
@@ -72,26 +58,8 @@
 + Response 201
 
             {
-              "jsonapi": {
-                "version": "1.0"
-              },
-              "data": {
-                "type": "channel",
-                "relationships": {
-                  "creator": {
-                    "data": {
-                      "type": "users",
-                      "id": "github|194892"
-                    }
-                  }
-                },
-                "id": "1c6edb3c-92a9-4031-b8b8-f194e2399db6",
-                "attributes": {
-                  "topic": "Shum shum shlippedy dop",
-                  "name": "rick-and-morty",
-                  "insertedAt": "2015-09-22T06:52:58Z"
-                }
-              }
+              "name": "rick-and-morty",
+              "id": "1c6edb3c-92a9-4031-b8b8-f194e2399db6"
             }
 
     + Schema
@@ -140,26 +108,8 @@
 + Response 200
 
             {
-              "jsonapi": {
-                "version": "1.0"
-              },
-              "data": {
-                "type": "channel",
-                "relationships": {
-                  "creator": {
-                    "data": {
-                      "type": "users",
-                      "id": "github|194892"
-                    }
-                  }
-                },
-                "id": "ed42c29b-60cb-4851-a7d3-ec1b3af10788",
-                "attributes": {
-                  "topic": "Wubba lubba dub-dub!",
-                  "name": "rick-and-morty",
-                  "insertedAt": "2015-09-27T00:50:36Z"
-                }
-              }
+              "name": "rick-and-morty",
+              "id": "ed42c29b-60cb-4851-a7d3-ec1b3af10788"
             }
 
     + Schema
@@ -199,26 +149,8 @@
 + Response 200
 
             {
-              "jsonapi": {
-                "version": "1.0"
-              },
-              "data": {
-                "type": "channel",
-                "relationships": {
-                  "creator": {
-                    "data": {
-                      "type": "users",
-                      "id": "github|194892"
-                    }
-                  }
-                },
-                "id": "1c6edb3c-92a9-4031-b8b8-f194e2399db6",
-                "attributes": {
-                  "topic": "Shum shum shlippedy dop",
-                  "name": "rick-and-morty",
-                  "insertedAt": "2015-09-22T06:52:58Z"
-                }
-              }
+              "name": "rick-and-morty",
+              "id": "ed42c29b-60cb-4851-a7d3-ec1b3af10788"
             }
 
     + Schema

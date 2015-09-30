@@ -49,7 +49,7 @@ defmodule SlerkAPI.API.Messages do
   def permitted_relations(_, _), do: [:channel]
 
   defp message_scope do
-    from(m in Message, limit: 300)
+    from(m in Message, limit: 300, preload: :channel)
   end
 
   defp is_owner?(conn, message) do

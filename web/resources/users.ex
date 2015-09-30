@@ -3,12 +3,12 @@ defmodule SlerkAPI.API.Users do
 
   import Relax.Responders
 
-  alias SlerkAPI.Serializers
-  alias SlerkAPI.UserPresence
+  alias SlerkAPI.User
+  alias SlerkAPI.Serializer
 
   plug JaSerializer.ContentTypeNegotiation
 
-  def serializer, do: Serializers.User
+  def serializer, do: Serializer.User
 
   def call(conn, _) do
     conn = Plug.Conn.put_resp_header(conn, "content-type", "application/vnd.api+json")
@@ -18,18 +18,16 @@ defmodule SlerkAPI.API.Users do
 
   ## GET users/:id
   def do_resource(conn, "GET", [id]) do
-    record = fetch_one_resource(id)
-    if is_nil(record[:error]), do: okay(conn, record), else: not_found(conn)
+    fetch_one_resource(id) |> do_resp(conn)
   end
 
   ## Pass on everything else
   def do_resource(conn, _), do: conn
 
-  ## Fetch user details from Auth0 & user presence store in parallel
-  def fetch_one_resource(id) do
-    [ Task.async(fn -> Auth0.get_user(id).body end),
-      Task.async(UserPresence, :get_presence, [id]) ]
-    |> Enum.map(&Task.await(&1, 5_000))
-    |> Enum.concat |> Enum.into(%{})
-  end
+  ## Fetch user
+  def fetch_one_resource(id), do: User.fetch(id)
+
+  ## Response
+  def do_resp(%{error: _}, conn), do: not_found(conn)
+  def do_resp(record, conn), do: okay(conn, record)
 end

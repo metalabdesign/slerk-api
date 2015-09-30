@@ -16,15 +16,23 @@ defmodule SlerkAPI.Message do
   @optional_fields ~w()
 
   def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+    model |> cast(params, @required_fields, @optional_fields)
   end
 
-  # TODO: I don't love mixing business logic into models but it's
-  #   convienent for the time being.
+  # TODO:
+  #   I don't love mixing business logic into models
+  #   but it's convienent for the time being.
   def notify_channel(changeset) do
     chan = "channels:" <> changeset.model.channel_id
-    json = SlerkAPI.Serializer.Message.format(changeset)
+    json = SlerkAPI.Serializer.Message.format(changeset.model)
     SlerkAPI.Endpoint.broadcast! chan, "message", json
+    changeset
   end
+
+  # Preload any associations
+  def preload(record = %{user_id: uid}, :user) when is_binary(uid) do
+    Map.put record, :user, SlerkAPI.User.fetch(uid)
+  end
+  def preload(record, :user), do: record
+  def preload(record, relationships), do: SlerkAPI.Repo.preload(record, relationships)
 end

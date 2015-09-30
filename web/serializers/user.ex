@@ -1,7 +1,9 @@
-defmodule SlerkAPI.Serializers.User do
-  use JaSerializer
+defmodule SlerkAPI.Serializer.User do
+  use SlerkAPI.Serializer
 
-  attributes [:name, :nickname, :picture, :online, :last_event_at]
+  @attributes [:id, :name, :nickname, :picture, :online, :last_event_at]
 
-  def id(user, _), do: user[:user_id]
+  def format(record, _conn \\ %{}, _ \\ %{}) do
+    record |> Map.take(@attributes)
+  end
 end

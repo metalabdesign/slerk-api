@@ -3,99 +3,61 @@
   "id": "/",
   "type": "object",
   "properties": {
-    "jsonapi": {
-      "id": "jsonapi",
+    "user": {
+      "id": "user",
       "type": "object",
       "properties": {
-        "version": {
-          "id": "version",
+        "picture": {
+          "id": "picture",
+          "type": "string"
+        },
+        "online": {
+          "id": "online",
+          "type": "boolean"
+        },
+        "nickname": {
+          "id": "nickname",
+          "type": "string"
+        },
+        "name": {
+          "id": "name",
+          "type": "string"
+        },
+        "last_event_at": {
+          "id": "last_event_at",
+          "type": "null"
+        },
+        "id": {
+          "id": "id",
           "type": "string"
         }
       }
     },
-    "data": {
-      "id": "data",
-      "type": "array",
-      "items": {
-        "id": "0",
-        "type": "object",
-        "properties": {
-          "type": {
-            "id": "type",
-            "type": "string"
-          },
-          "relationships": {
-            "id": "relationships",
-            "type": "object",
-            "properties": {
-              "user": {
-                "id": "user",
-                "type": "object",
-                "properties": {
-                  "data": {
-                    "id": "data",
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "id": "type",
-                        "type": "string"
-                      },
-                      "id": {
-                        "id": "id",
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              },
-              "channel": {
-                "id": "channel",
-                "type": "object",
-                "properties": {
-                  "data": {
-                    "id": "data",
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "id": "type",
-                        "type": "string"
-                      },
-                      "id": {
-                        "id": "id",
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "id": {
-            "id": "id",
-            "type": "string"
-          },
-          "attributes": {
-            "id": "attributes",
-            "type": "object",
-            "properties": {
-              "text": {
-                "id": "text",
-                "type": "string"
-              },
-              "meta": {
-                "id": "meta",
-                "type": "object",
-                "properties": {}
-              },
-              "insertedAt": {
-                "id": "insertedAt",
-                "type": "string"
-              }
-            }
-          }
+    "text": {
+      "id": "text",
+      "type": "string"
+    },
+    "meta": {
+      "id": "meta",
+      "type": "null"
+    },
+    "id": {
+      "id": "id",
+      "type": "string"
+    },
+    "channel": {
+      "id": "channel",
+      "type": "object",
+      "properties": {
+        "name": {
+          "id": "name",
+          "type": "string"
+        },
+        "id": {
+          "id": "id",
+          "type": "string"
         }
-      },
-      "additionalItems": false
+      }
     }
   }
 }
