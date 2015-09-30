@@ -9,3 +9,9 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+SlerkAPI.Repo.insert!(%SlerkAPI.Channel{
+  id: "9d0bea9c-4a68-4129-bc58-0f929ee11ffd",
+  name: "general",
+  user_id: "github|194892"
+})
