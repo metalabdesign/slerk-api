@@ -3,55 +3,29 @@
   "id": "/",
   "type": "object",
   "properties": {
-    "jsonapi": {
-      "id": "jsonapi",
-      "type": "object",
-      "properties": {
-        "version": {
-          "id": "version",
-          "type": "string"
-        }
-      }
+    "picture": {
+      "id": "picture",
+      "type": "string"
     },
-    "data": {
-      "id": "data",
-      "type": "object",
-      "properties": {
-        "type": {
-          "id": "type",
-          "type": "string"
-        },
-        "id": {
-          "id": "id",
-          "type": "string"
-        },
-        "attributes": {
-          "id": "attributes",
-          "type": "object",
-          "properties": {
-            "picture": {
-              "id": "picture",
-              "type": "string"
-            },
-            "online": {
-              "id": "online",
-              "type": "boolean"
-            },
-            "nickname": {
-              "id": "nickname",
-              "type": "string"
-            },
-            "name": {
-              "id": "name",
-              "type": "string"
-            },
-            "lastEventAt": {
-              "id": "lastEventAt",
-              "type": "null"
-            }
-          }
-        }
-      }
+    "online": {
+      "id": "online",
+      "type": "boolean"
+    },
+    "nickname": {
+      "id": "nickname",
+      "type": "string"
+    },
+    "name": {
+      "id": "name",
+      "type": "string"
+    },
+    "last_event_at": {
+      "id": "last_event_at",
+      "type": "null"
+    },
+    "id": {
+      "id": "id",
+      "type": "string"
     }
   }
 }

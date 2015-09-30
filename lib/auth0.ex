@@ -8,7 +8,7 @@ defmodule Auth0 do
   end
 
   def process_response_body(body) do
-    body |> Poison.decode!(keys: :atoms!)
+    body |> Poison.decode!(keys: :atoms)
   end
 
   def get_user(id, fields \\ ~w(user_id name nickname picture)) do

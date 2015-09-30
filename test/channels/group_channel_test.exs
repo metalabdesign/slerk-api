@@ -15,7 +15,7 @@ defmodule SlerkAPI.GroupChannelTest do
 
   test "broadcasts messages", %{socket: socket} do
     push socket, "message", %{"text" => "wubalubadubdub"}
-    assert_broadcast "message", %{data: _}, 500
+    assert_broadcast "message", %{id: _}, 1_500
   end
 
   test "sends error event on bad message payload", %{socket: socket} do

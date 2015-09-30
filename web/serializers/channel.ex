@@ -1,6 +1,7 @@
 defmodule SlerkAPI.Serializer.Channel do
-  use JaSerializer
+  use SlerkAPI.Serializer
 
-  has_one :creator, field: :creator_id, type: "users"
-  attributes [:name, :topic, :inserted_at]
+  def format(record, _conn, _) do
+    record |> Map.take([:id, :name])
+  end
 end
