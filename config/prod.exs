@@ -19,7 +19,7 @@ config :logger, level: :info
 # CORS
 config :plug_cors,
   origins: ["*"],
-  headers: ["Authorization"]
+  headers: ~w(accept authorization origin)
 
 # Configure for Heroku PostgreSQL
 config :slerk_api, SlerkAPI.Repo,
