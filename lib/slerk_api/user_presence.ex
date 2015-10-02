@@ -26,11 +26,11 @@ defmodule SlerkAPI.UserPresence do
   end
 
   defp broadcast_status(status, uid, 1) when status == "online" do
-    Endpoint.broadcast("users:presence", "status_updated", %{uid: uid, status: status})
+    Endpoint.broadcast("users:presence", "status_updated", %{id: uid, online: true})
   end
 
   defp broadcast_status(status, uid, 0) when status == "offline" do
-    Endpoint.broadcast("users:presence", "status_updated", %{uid: uid, status: status})
+    Endpoint.broadcast("users:presence", "status_updated", %{id: uid, online: false})
   end
 
   defp broadcast_status(_, _, _), do: nil
