@@ -11,7 +11,7 @@ defmodule SlerkAPI.Endpoint do
 
   plug Plug.RequestId
   plug Plug.Logger
-  plug PlugCors
+  plug Corsica, allow_credentials: true
   plug Joken.Plug,
     on_verifying: &Auth0Token.validate/0,
     on_error: &Joken.Plug.default_on_error/2
