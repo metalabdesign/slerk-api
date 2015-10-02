@@ -4,8 +4,13 @@ defmodule SlerkAPI.PresenceChannel do
   alias SlerkAPI.UserPresence
 
   def join(_, _, socket) do
-    UserPresence.inc_ref_count(socket.assigns.uid)
+    send(self, :after_join)
     {:ok, socket}
+  end
+
+  def handle_info(:after_join, socket) do
+    UserPresence.inc_ref_count(socket.assigns.uid)
+    {:noreply, socket}
   end
 
   def terminate(_, socket) do
