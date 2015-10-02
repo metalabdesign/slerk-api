@@ -34,7 +34,7 @@ defmodule SlerkAPI.Mixfile do
      {:cowboy, "~> 1.0"},
      {:joken, "0.16.0"},
      {:relax, github: "AgilionApps/relax"},
-     {:plug_cors, "~> 0.8.0"},
+     {:corsica, "~> 0.3.0"},
      {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.2"},
      {:httpotion, "~> 2.1.0"},
      {:inflex, "~> 1.5.0"},
