@@ -1,6 +1,5 @@
 %{"base64url": {:hex, :base64url, "0.0.1"},
   "con_cache": {:hex, :con_cache, "0.9.0"},
-  "corsica": {:hex, :corsica, "0.3.2"},
   "cowboy": {:hex, :cowboy, "1.0.3"},
   "cowlib": {:hex, :cowlib, "1.0.1"},
   "decimal": {:hex, :decimal, "1.1.0"},
