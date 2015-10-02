@@ -16,6 +16,11 @@ config :slerk_api, SlerkAPI.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+# CORS
+config :plug_cors,
+  origins: ["*"],
+  headers: ["Authorization"]
+
 # Configure for Heroku PostgreSQL
 config :slerk_api, SlerkAPI.Repo,
   adapter: Ecto.Adapters.Postgres,
