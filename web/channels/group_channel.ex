@@ -6,6 +6,8 @@ defmodule SlerkAPI.GroupChannel do
   alias SlerkAPI.UserPresenceStore
   alias JaSerializer.EctoErrorSerializer
 
+  intercept ["user_typing"]
+
   def join("channels:" <> _, _, socket) do
     {:ok, socket}
   end
@@ -25,6 +27,14 @@ defmodule SlerkAPI.GroupChannel do
   def handle_in("typing", _, socket) do
     touch_last_event_at socket
     broadcast! socket, "user_typing", Dict.take(socket.assigns, [:uid])
+    {:noreply, socket}
+  end
+
+  ## Don't broadcast typing events to actor
+  def handle_out("user_typing", msg = %{uid: uid}, socket) do
+    unless uid == socket.assigns.uid do
+      push socket, "user_typing", msg
+    end
     {:noreply, socket}
   end
 
