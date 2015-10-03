@@ -14,7 +14,7 @@ defmodule SlerkAPI.User do
   def fetch_all() do
     cached_users = ConCache.ets(:users) |> :ets.tab2list
     Enum.map(cached_users, fn ({uid, user}) ->
-      Map.merge(user, UserPresence.get_presence(uid))
+      user |> Map.put(:id, uid) |> Map.merge(UserPresence.get_presence(uid))
     end)
   end
 
