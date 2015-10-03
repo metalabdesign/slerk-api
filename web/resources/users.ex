@@ -17,6 +17,11 @@ defmodule SlerkAPI.API.Users do
   end
 
   ## GET users/:id
+  def do_resource(conn, "GET", []) do
+    fetch_resources |> do_resp(conn)
+  end
+
+  ## GET users/:id
   def do_resource(conn, "GET", [id]) do
     fetch_one_resource(id) |> do_resp(conn)
   end
@@ -26,6 +31,9 @@ defmodule SlerkAPI.API.Users do
 
   ## Fetch user
   def fetch_one_resource(id), do: User.fetch(id)
+
+  ## Fetch all users
+  def fetch_resources(), do: User.fetch_all
 
   ## Response
   def do_resp(%{error: _}, conn), do: not_found(conn)

@@ -10,6 +10,14 @@ defmodule SlerkAPI.User do
     |> Map.put(:id, id)
   end
 
+  ## Given time constraints, service only pulls cached entries
+  def fetch_all() do
+    cached_users = ConCache.ets(:users) |> :ets.tab2list
+    Enum.map(cached_users, fn ({uid, user}) ->
+      Map.merge(user, UserPresence.get_presence(uid))
+    end)
+  end
+
   ## Fetch user details from Auth0 & user presence store in parallel
   defp fetch_remote(id) do
     [ Task.async(__MODULE__, :fetch_auth0_details, [id]),

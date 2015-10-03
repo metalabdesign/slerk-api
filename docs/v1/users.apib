@@ -1,6 +1,35 @@
 # Group Users
 
-## Retrieve User [/users/{user_id}]
+## Retrieve Users [/v1/users]
+
+### GET
+
++ Request
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: Bearer <<USERS_JWT_TOKEN>>
+
++ Response 200
+
+            [
+              {
+                "picture": "https://avatars.githubusercontent.com/u/194892?v=3",
+                "online": false,
+                "nickname": "jamesdphillips",
+                "name": "James Phillips",
+                "last_event_at": null
+              }
+            ]
+
+    + Schema
+
+            <!-- include(user-schema.json) -->
+
+<!-- include(not_found.apib) -->
+
+## Retrieve User [/v1/users/{user_id}]
 
 ### GET
 
