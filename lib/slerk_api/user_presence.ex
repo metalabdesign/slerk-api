@@ -5,7 +5,9 @@ defmodule SlerkAPI.UserPresence do
   """
 
   alias SlerkAPI.UserPresenceStore
+  alias SlerkAPI.Serializer
   alias SlerkAPI.Endpoint
+  alias SlerkAPI.User
 
   @doc "Increment count and conditionally broadcast to channel"
   def inc_ref_count(uid) do
@@ -26,11 +28,15 @@ defmodule SlerkAPI.UserPresence do
   end
 
   defp broadcast_status(status, uid, 1) when status == "online" do
-    Endpoint.broadcast("users:presence", "status_updated", %{id: uid, online: true})
+    Endpoint.broadcast("users:presence", "status_updated", fetch_user_payload(uid))
   end
 
   defp broadcast_status(status, uid, 0) when status == "offline" do
-    Endpoint.broadcast("users:presence", "status_updated", %{id: uid, online: false})
+    Endpoint.broadcast("users:presence", "status_updated", fetch_user_payload(uid))
+  end
+
+  defp fetch_user_payload(uid) do
+    User.fetch(uid) |> Serializer.User.format
   end
 
   defp broadcast_status(_, _, _), do: nil
