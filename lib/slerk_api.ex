@@ -14,7 +14,7 @@ defmodule SlerkAPI do
       # Start UserPresence store
       worker(SlerkAPI.UserPresenceStore, []),
       # Start ETS based cache
-      worker(ConCache, [[ttl_check: :timer.seconds(5), ttl: :timer.minutes(5)], [name: :users]])
+      worker(ConCache, [[ttl_check: :timer.seconds(5), ttl: :timer.minutes(60)], [name: :users]])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
