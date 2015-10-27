@@ -6,6 +6,7 @@ gem 'actioncable'
 gem 'graphql', github: "jamesdphillips/graphql-ruby", branch: "subscriptions"
 gem 'knock'
 gem 'pg'
+gem 'puma'
 
 group :development, :test do
   gem 'byebug'
