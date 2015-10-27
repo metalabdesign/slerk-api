@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20151016003923) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "nickname"
+    t.string   "remote_id"
     t.string   "picture_key"
     t.boolean  "online"
     t.datetime "last_event_at"

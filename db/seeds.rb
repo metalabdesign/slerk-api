@@ -4,6 +4,7 @@ User.create(
   picture_key: "4GMt4xk.png",
   name: "Homer Simpson",
   nickname: "homer",
+  remote_id: "github|194892",
   last_event_at: 5.minutes.ago,
   online: true
 )

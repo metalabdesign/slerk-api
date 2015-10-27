@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
-gem 'graphql'
+
+gem 'actioncable'
+gem 'graphql', github: "jamesdphillips/graphql-ruby", branch: "subscriptions"
+gem 'knock'
 gem 'pg'
 
 group :development, :test do

@@ -1,1 +1,5 @@
-SlerkSchema = GraphQL::Schema.new(query: QueryType)
+SlerkSchema = GraphQL::Schema.new(
+  query: QueryType,
+  mutation: MutationType,
+  subscription: SubscriptionType
+)
