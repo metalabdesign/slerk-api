@@ -8,6 +8,7 @@ gem 'graphql', github: "jamesdphillips/graphql-ruby", branch: "subscriptions"
 gem 'knock'
 gem 'pg'
 gem 'puma'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug'

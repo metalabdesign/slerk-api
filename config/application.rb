@@ -35,5 +35,13 @@ module DemoTwo
     # Graph
     config.autoload_paths << Rails.root.join('app', 'graph', 'types')
     config.autoload_paths << Rails.root.join('app', 'graph', 'fields')
+
+    # CORS
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
   end
 end
