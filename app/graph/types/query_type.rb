@@ -9,5 +9,10 @@ QueryType = GraphQL::ObjectType.define do
   end
 
   field :channel, ChannelType, field: FetchField.new(type: ChannelType, model: Channel)
+  field :channels do
+    type types[!ChannelType]
+    resolve -> (_, _, _) { Channel.all }
+  end
+
   field :message, MessageType, field: FetchField.new(type: MessageType, model: Message)
 end
