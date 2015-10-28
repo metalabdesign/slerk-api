@@ -1,8 +1,9 @@
 UserType = GraphQL::ObjectType.define do
   name "User"
   description "A user of the system"
+  interfaces [NodeIdentification.interface]
 
-  field :id, !types.ID
+  field :id, field: GraphQL::Relay::GlobalIdField.new("User")
   field :name, !types.String
   field :nickname, !types.String
   field :picture_key, !types.String
@@ -15,5 +16,11 @@ UserType = GraphQL::ObjectType.define do
     type !types.String
     argument :size, !types.String, "large, medium or small."
     resolve -> (user, args, _) { UserUtils.photo_url(user, args[:size]) }
+  end
+
+  field :channels do
+    type -> { !types[!ChannelType] }
+    description "All channels that the user belongs to"
+    resolve -> (obj, _, _) { Channel.all }
   end
 end

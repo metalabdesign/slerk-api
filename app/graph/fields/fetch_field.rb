@@ -1,7 +1,7 @@
 class FetchField < GraphQL::Field
   def initialize(model:, type:)
-    self.type = type
     @model = model
+    self.type = type
     self.description = "Find a #{model.name} by ID"
     self.arguments = {
       id: GraphQL::Argument.define do
@@ -12,10 +12,6 @@ class FetchField < GraphQL::Field
   end
 
   def resolve(object, args, cxt)
-    if args["id"]
-      @model.find_by(id: args["id"])
-    else
-      @model.all
-    end
+    @model.find_by(id: args[:id])
   end
 end

@@ -56,6 +56,8 @@ GEM
     erubis (2.7.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    graphql-relay (0.4.4)
+      graphql (~> 0.8)
     i18n (0.7.0)
     json (1.8.3)
     jwt (1.5.1)
@@ -130,6 +132,7 @@ DEPENDENCIES
   actioncable
   byebug
   graphql!
+  graphql-relay
   knock
   pg
   puma

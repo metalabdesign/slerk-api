@@ -1,8 +1,9 @@
 ChannelType = GraphQL::ObjectType.define do
   name "Channel"
   description "A channel in the system"
+  interfaces [NodeIdentification.interface]
 
-  field :id, !types.ID
+  field :id, field: GraphQL::Relay::GlobalIdField.new("Channel")
   field :name, !types.String
   field :topic, !types.String
   field :created_at, DateType
