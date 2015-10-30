@@ -1,6 +1,6 @@
 # Thompsons
 
-User.create(
+User.find_or_create_by(id: 1).update(
   picture_key: "4GMt4xk.png",
   name: "Homer Simpson",
   nickname: "homer",
@@ -9,7 +9,7 @@ User.create(
   online: true
 )
 
-User.create(
+User.find_or_create_by(id: 2).update(
   picture_key: "CcjKwtv.png",
   name: "Bart Simpson",
   nickname: "bart",
@@ -17,7 +17,7 @@ User.create(
   online: true
 )
 
-User.create(
+User.find_or_create_by(id: 3).update(
   picture_key: "m78yUxO.png",
   name: "Lisa Simpson",
   nickname: "lisa",
@@ -25,7 +25,7 @@ User.create(
   online: false
 )
 
-User.create(
+User.find_or_create_by(id: 4).update(
   picture_key: "fSyH1GI.png",
   name: "Krusty the Clown",
   nickname: "krusty",
@@ -33,7 +33,7 @@ User.create(
   online: false
 )
 
-User.create(
+User.find_or_create_by(id: 5).update(
   picture_key: "HHuQX7h.png",
   name: "Comic Book Guy",
   nickname: "comic.b.guy",
@@ -51,7 +51,38 @@ Channel.find_or_create_by(id: 2).update(
   topic: "Krusty Komedy Klassic"
 )
 
-Message.create(
-  text: "I like cakes.",
-  channel_id: 1
+Message.find_or_create_by(id: 1).update(
+  text: "HEY! HEY!",
+  channel_id: 1,
+  author_id: 4
+)
+
+Message.find_or_create_by(id: 2).update(
+  text: "howdy",
+  channel_id: 1,
+  author_id: 3
+)
+
+Message.find_or_create_by(id: 3).update(
+  text: "You tried your best and you failed miserably. The lesson is never try.",
+  channel_id: 1,
+  author_id: 1
+)
+
+Message.find_or_create_by(id: 4).update(
+  text: "Mental note: the girl knows too much.",
+  channel_id: 1,
+  author_id: 1
+)
+
+Message.find_or_create_by(id: 5).update(
+  text: "![](https://media.giphy.com/media/xTiTnjHijj5I9CEixW/giphy.gif)",
+  channel_id: 1,
+  author_id: 2
+)
+
+Message.find_or_create_by(id: 6).update(
+  text: "WHY YOU LITTLE!~~",
+  channel_id: 1,
+  author_id: 1
 )

@@ -18,6 +18,7 @@ class AddSlerkModels < ActiveRecord::Migration
 
     create_table :messages do |t|
       t.integer :channel_id
+      t.integer :author_id
       t.string :text
       t.json :meta
       t.timestamps

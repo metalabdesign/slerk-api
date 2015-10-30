@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20151016003923) do
 
   create_table "messages", force: :cascade do |t|
     t.integer  "channel_id"
+    t.integer  "author_id"
     t.string   "text"
     t.json     "meta"
     t.datetime "created_at"
