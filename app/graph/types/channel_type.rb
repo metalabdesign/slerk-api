@@ -14,4 +14,10 @@ ChannelType = GraphQL::ObjectType.define do
     description "Messages in this channel"
     resolve -> (obj, _, _) { Message.where(channel_id: obj.id) }
   end
+
+  connection :messageConnection, -> { MessageConnection } do
+    resolve -> (chan, _, _) {
+      Message.where(channel_id: chan)
+    }
+  end
 end

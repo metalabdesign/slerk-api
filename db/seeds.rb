@@ -43,7 +43,7 @@ User.find_or_create_by(id: 5).update(
 
 Channel.find_or_create_by(id: 1).update(
   name: "watercooler",
-  topic: "You tried your best and you failed miserably. The lesson is never try."
+  topic: "Eye on Springfield",
 )
 
 Channel.find_or_create_by(id: 2).update(

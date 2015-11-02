@@ -6,11 +6,13 @@ NewMessageMutation = GraphQL::Relay::Mutation.define do
 
   return_field :message, !MessageType
   return_field :channel, !ChannelType
-  return_field :newChannelEdge, !types.String
+  return_field :newMessageEdge, -> { MessageType.edge_type }
 
   resolve -> (args, ctx) {
-    ch = NodeIdentification.object_from_id("Q2hhbm5lbC0x") # LOL could be anything..
-    mg = ch.messages.create(text: args[:text], author: ctx[:current_user])
-    { message: mg, channel: ch, newChannelEdge: "abc" }
+    channel = NodeIdentification.object_from_id(args[:channelID]) # LOL could be anything..
+    message = channel.messages.create(text: args[:text], author: ctx[:current_user])
+    connection = GraphQL::Relay::RelationConnection.new(Message.all, {}) # Requires a relation(?)
+    edge = GraphQL::Relay::Edge.new(message, connection)
+    { message: message, channel: channel, newMessageEdge: edge }
   }
 end
