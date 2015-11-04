@@ -41,6 +41,14 @@ User.find_or_create_by(id: 5).update(
   online: true
 )
 
+User.find_or_create_by(id: 6).update(
+  picture_key: "pre9bwN.png",
+  name: "Slerkbot",
+  nickname: "slerkbot",
+  last_event_at: 10.minutes.ago,
+  online: true
+)
+
 Channel.find_or_create_by(id: 1).update(
   name: "watercooler",
   topic: "Eye on Springfield",

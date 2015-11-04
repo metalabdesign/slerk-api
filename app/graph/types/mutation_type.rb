@@ -3,4 +3,5 @@ MutationType = GraphQL::ObjectType.define do
   description "The root for mutations in this schema"
 
   field :newMessage, field: NewMessageMutation.field
+  field :updateTopic, field: UpdateTopicMutation.field
 end
